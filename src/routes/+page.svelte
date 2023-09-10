@@ -1,6 +1,6 @@
 <script lang="ts">
     let currentIndex = -1;
-
+    let currentItem: any;
 	document.addEventListener('keydown', function (event) {
 
 		// Get all focusable elements
@@ -18,6 +18,14 @@
     			// Implement your logic to calculate the next index when pressing Up
 				break
             case 9: // Tab
+                if (event.shiftKey) {
+                    console.log('focusNextElement -1', event.keyCode)
+                    focusNextElement(-1);
+                } else {
+                    console.log('focusNextElement 1', event.keyCode)
+                    focusNextElement(1);
+                }
+                break;
 			case 39: // Right
 			case 40: // Down
                 console.log('focusNextElement 1', event.keyCode)
@@ -25,18 +33,13 @@
 				break
 			case 13: // Enter
 				// Implement your logic for the "Enter" button
-                alert('you selected: ' + focusableArray[currentIndex].innerHTML)
+                // alert('you selected: ' + focusableArray[currentIndex].innerHTML)
+                if (currentItem) {
+                    console.log('you selected: ' + currentItem.innerHTML)
+                    currentItem.click();
+                }
 				return // Return to avoid changing focus
 		}
-
-		// Make sure nextIndex is within bounds
-		if (nextIndex >= 0 && nextIndex < focusableElements.length) {
-			// Move focus to the next element
-			(focusableElements[nextIndex] as any).focus()
-		} else {
-            // Focus the first element
-            (focusableElements[0] as any).focus()
-        }
 	})
 
     function focusNextElement(direction: number) {
@@ -58,12 +61,14 @@
         
         (focusableArray[currentIndex] as any).style.border = '2px solid blue';
         (focusableArray[currentIndex] as any).scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+        (focusableArray[currentIndex] as any).focus();
+        currentItem = focusableArray[currentIndex];
     }
 
 
 </script>
 
-<ion-card button={true} class="item i0">
+<ion-card button={true} class="item i1">
 	<ion-card-header>
 		<ion-card-title>Card 1</ion-card-title>
 		<ion-card-subtitle>Card Subtitle</ion-card-subtitle>
@@ -74,7 +79,7 @@
 	</ion-card-content>
 </ion-card>
 
-<ion-card button={true} class="item i1">
+<ion-card button={true} class="item i2" on:click={()=>{alert('click')}}>
 	<ion-card-header>
 		<ion-card-title>Card 2</ion-card-title>
 		<ion-card-subtitle>Card Subtitle</ion-card-subtitle>
@@ -85,7 +90,7 @@
 	</ion-card-content>
 </ion-card>
 
-<ion-card button={true} class="item i2">
+<ion-card button={true} class="item i3">
 	<ion-card-header>
 		<ion-card-title>Card 3</ion-card-title>
 		<ion-card-subtitle>Card Subtitle</ion-card-subtitle>
@@ -96,7 +101,7 @@
 	</ion-card-content>
 </ion-card>
 
-<ion-card button={true} class="item i3">
+<ion-card button={true} class="item i4">
 	<ion-card-header>
 		<ion-card-title>Card 4</ion-card-title>
 		<ion-card-subtitle>Card Subtitle</ion-card-subtitle>
@@ -113,6 +118,7 @@
         min-height: 200px;
 	}
 	ion-card:focus {
-		border: 2px solid blue;
+        background-color: pink;
+		/* border: 2px solid blue; */
 	}
 </style>
