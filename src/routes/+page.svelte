@@ -2,7 +2,6 @@
     let currentIndex = -1;
     let currentItem: any;
 	document.addEventListener('keydown', function (event) {
-
 		// Get all focusable elements
 		const focusableElements = document.querySelectorAll('.item')
         const focusableArray = Array.from(focusableElements); // Convert NodeList to Array
@@ -43,7 +42,7 @@
 	})
 
     function focusNextElement(direction: number) {
-        // Get a NodeList of all focusable elements on the page
+		// Get a NodeList of all focusable elements on the page
         const focusableElements = document.querySelectorAll('.item'); 
         const focusableArray = Array.from(focusableElements); // Convert NodeList to Array
 
@@ -61,12 +60,18 @@
         
         (focusableArray[currentIndex] as any).style.border = '2px solid blue';
         (focusableArray[currentIndex] as any).scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
-        (focusableArray[currentIndex] as any).focus();
         currentItem = focusableArray[currentIndex];
+
+		// get the item currently in focus
+		const activeElement: any = document.activeElement;
+		if (activeElement) console.log('activeElement', activeElement)
+		if (activeElement) activeElement.blur()
+		document.body.focus()
     }
 
 
 </script>
+Version: 0.0.2<br/>
 
 <ion-card button={true} class="item i1">
 	<ion-card-header>
@@ -119,6 +124,5 @@
 	}
 	ion-card:focus {
         background-color: pink;
-		/* border: 2px solid blue; */
 	}
 </style>
