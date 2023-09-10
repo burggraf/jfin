@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">jfin</string>
+    <string name="title_activity_main">jfin</string>
+    <string name="package_name">com.dmarie.jfin</string>
+    <string name="custom_url_scheme">com.dmarie.jfin</string>
+</resources>

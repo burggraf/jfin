@@ -1,0 +1,4 @@
+npx cap build android --keystorepath ~/keystores/jfin.jks --keystorepass $KEYSTOREPASS --keystorealias jfin --keystorealiaspass $KEYSTOREPASS --androidreleasetype APK
+adb install /Users/markb/dev/jfin/android/app/build/outputs/apk/release/app-release-signed.apk
+adb shell am start -n com.dmarie.jfin/.MainActivity
+

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { setupIonicBase } from 'ionic-svelte';
+	// import { setupIonicSvelte } from '$ionic/svelte';
 
 	/* Theme variables */
 	import '../theme/variables.css';
@@ -8,7 +9,9 @@
     import 'ionic-svelte/components/all';
 
 	/* run base configuration code from ionic/core */
-	setupIonicBase();
+	setupIonicBase({ mode: 'ios' });
+    // setupIonicSvelte({ mode: 'ios' });
+
 </script>
 
 <ion-app>

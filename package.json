@@ -10,6 +10,8 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
+		"@capacitor/assets": "^2.0.4",
+		"@capacitor/cli": "^5.3.0",
 		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.20.4",
 		"svelte": "^4.0.5",
@@ -20,6 +22,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@capacitor/android": "^5.3.0",
+		"@capacitor/core": "^5.3.0",
 		"@ionic/core": "^7.3.3",
 		"ionic-svelte": "^0.5.82"
 	}
